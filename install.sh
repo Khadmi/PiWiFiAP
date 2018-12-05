@@ -17,7 +17,7 @@ do
 done
 
 echo "Installing hostapd and dnsmansq"
-	sudo apt-get install hostapd dnsmansq
+	sudo apt-get install hostapd dnsmasq
 
 
 echo "Creating hostapd config file"
@@ -25,7 +25,7 @@ echo "Creating hostapd config file"
 
 
 echo "Creating dnsmansq config file"
-	sudo cp dnsmansq.conf /etc/dnsmansq.conf
+	sudo cp dnsmasq.conf /etc/dnsmasq.conf
 	
 	
 echo "Creating intetface"
