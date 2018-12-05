@@ -14,7 +14,10 @@ echo "Installing hostapd and dnsmansq"
 echo "Creating hostapd config file"
 	sudo cp hostapd.conf /etc/hostapd/hostapd.conf
 
-
+echo "Creating path to hostapd config"
+	#sudo echo "DAEMON_CONF=\"/etc/hostapd/hostapd.conf\"" >> /etc/default/hostapd
+	sudo sed -i "/DAEMON_CONF/c\ DAEMON_CONF=\"/etc/hostapd/hostapd.conf\""  /etc/default/hostapd
+	
 echo "Creating dnsmansq config file"
 	sudo cp dnsmasq.conf /etc/dnsmasq.conf
 	
@@ -30,8 +33,7 @@ echo "Configuring dhcpcd"
 	sudo echo "static ip_address=192.168.0.10/24" >> /etc/dhcpcd.conf
 	sudo echo "nohook wpa_supplicant" >> /etc/dhcpcd.conf
 	
-echo "Creating path to hostapd config"
-	sudo echo "DAEMON_CONF=\"/etc/hostapd/hostapd.conf\"" >> /etc/default/hostapd
+
 
 echo "kernel-headers and other dependencies"
 	sudo apt-get update
