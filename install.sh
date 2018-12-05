@@ -4,17 +4,8 @@ echo "WiFi Access Point crating script"
 echo "--------------------------------"
 
 echo "Your syetem need internet"
-echo "Is internet connection OK: y/n"
+echo "Is internet connection OK"
 
-while true:
-do
-	read net
-		if [ "$net" == "n" ];
-		then
-			echo "No internet so installtion will be cancled"
-			break
-		fi
-done
 
 echo "Installing hostapd and dnsmansq"
 	sudo apt-get install hostapd dnsmasq
@@ -46,8 +37,8 @@ echo "kernel-headers and other dependencies"
 	sudo apt-get install bc
 	sudo apt-get update
 
-echo "Installing rtl8821AU chipset driver"
-	cd rtl8821AU
+echo "Installing rtl8812AU chipset driver"
+	cd rtl8812AU
 	sudo make clean
 	sudo make all
 	sudo make install
