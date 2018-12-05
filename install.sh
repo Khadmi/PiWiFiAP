@@ -28,6 +28,7 @@ echo "Configuring dhcpcd"
 	sudo echo "" >> /etc/dhcpcd.conf
 	sudo echo "interface wlan0" >> /etc/dhcpcd.conf
 	sudo echo "static ip_address=192.168.0.10/24" >> /etc/dhcpcd.conf
+	sudo echo "nohook wpa_supplicant" >> /etc/dhcpcd.conf
 	
 echo "Creating path to hostapd config"
 	sudo echo "DAEMON_CONF=\"/etc/hostapd/hostapd.conf\"" >> /etc/default/hostapd
