@@ -20,10 +20,12 @@ echo "Creating dnsmansq config file"
 	
 	
 echo "Creating intetface"
+	sudo echo "" >> /etc/network/interfaces
 	sudo echo "allow-hotplug wlan0" >> /etc/network/interfaces
 	sudo echo "iface  wlan0 inet manual"  >> /etc/network/interfaces
 
 echo "Configuring dhcpcd"
+	sudo echo "" >> /etc/dhcpcd.conf
 	sudo echo "interface wlan0" >> /etc/dhcpcd.conf
 	sudo echo "static ip_address=192.168.0.10/24" >> /etc/dhcpcd.conf
 	
@@ -48,7 +50,7 @@ cd ..
 
 echo "Writing udev rules....."
 	echo 'SUBSYSTEM=="net", ACTION=="add", DRIVERS=="rtl8812au", ATTR{type}=="1", NAME="wlan0"' >> /lib/udev/rules.d/70-persistent-network.rules
-	sudo modprob rtl8821au
+	sudo modprobe rtl8812au
 
 
 echo "Allow hostapd in ufw rules"	
