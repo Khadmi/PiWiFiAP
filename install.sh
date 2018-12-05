@@ -47,7 +47,7 @@ echo "kernel-headers and other dependencies"
 	sudo apt-get update
 
 echo "Installing rtl8821AU chipset driver"
-	cd driver
+	cd rtl8821AU
 	sudo make clean
 	sudo make all
 	sudo make install
