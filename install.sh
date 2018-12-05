@@ -52,7 +52,14 @@ echo "Installing rtl8812AU chipset driver"
 cd ..
 
 echo "Writing udev rules....."
-	echo 'SUBSYSTEM=="net", ACTION=="add", DRIVERS=="rtl8812au", ATTR{type}=="1", NAME="wlan0"' >> /lib/udev/rules.d/70-persistent-network.rules
+	#echo 'SUBSYSTEM=="net", ACTION=="add", DRIVERS=="rtl8812au", ATTR{type}=="1", NAME="wlan0"' >> /lib/udev/rules.d/70-persistent-network.rules
+	sudo sed -i "/rtl8812au/c\ \"SUBSYSTEM==\"net\", ACTION==\"add\", DRIVERS==\"rtl8812au\", ATTR{type}==\"1\", NAME=\"wlan0\""  /lib/udev/rules.d/70-persistent-network.rules
+	if [ $? == 0 ];
+	then
+		echo "Dev Rule exist"
+	else
+  		sudo echo 'SUBSYSTEM=="net", ACTION=="add", DRIVERS=="rtl8812au", ATTR{type}=="1", NAME="wlan0"' >> /lib/udev/rules.d/70-persistent-network.rules
+	fi
 	sudo modprobe rtl8812au
 
 
