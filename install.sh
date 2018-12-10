@@ -19,8 +19,13 @@ echo "Creating path to hostapd config"
 	sudo sed -i "/DAEMON_CONF/c\ DAEMON_CONF=\"/etc/hostapd/hostapd.conf\""  /etc/default/hostapd
 	
 echo "Creating dnsmansq config file"
-	sudo cp dnsmasq.conf /etc/dnsmasq.conf
+	if [ ! -f /etc/dnsmasq.conf.orig ]; then
+		sudo mv dnsmansq.conf /etc/dnsmasq.conf.orig
+	fi
+	sudo cp dnsmansq.conf /etc/dnsmasq.conf
 	
+echo "forwarding  ipv4"	
+	sudo sed -i "/net.ipv4.ip_forward/c\net.ipv4.ip_forward=1"  /etc/sysctl.conf
 	
 echo "Creating intetface"
 	sudo echo "" >> /etc/network/interfaces
