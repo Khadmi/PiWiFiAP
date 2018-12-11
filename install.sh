@@ -70,8 +70,20 @@ echo "Writing udev rules....."
 
 echo "Allow hostapd in ufw rules"	
 	sudo ufw allow to any port 53
-	sudo ufw allow to any port 67 proto udp
-	sudo ufw allow to any port 68 proto udp
+        sudo ufw allow to any port 67 proto udp
+        sudo ufw allow to any port 68 proto udp
+
+        sudo ufw allow out on wlan0 to 192.168.0.0/24
+        sudo ufw allow out from 192.168.0.10/24
+        sudo ufw allow  from 192.168.0.10/24
+
+        sudo ufw allow 67
+        sudo ufw allow 68
+        sudo ufw allow 53
+
+        sudo ufw allow out 67
+        sudo ufw allow out 68
+        sudo ufw allow out 53
 
 echo "Creating iptabele rules"
 	sudo iptables -t nat -A POSTROUTING -o ppp0 -j MASQUERADE
