@@ -2,9 +2,11 @@
 This code is used to create WiFi AP in raspberry pi 
 
 Procedure 
+---------
+1 git clone https://github.com/Khadmi/PiWiFiAP
 
-1 Raspberry pi should have internet connetion
+2 Raspberry pi should have internet connetion
 
-2 chmod +x install.sh
+3 chmod +x install.sh
 
-3 sudo ./install.sh
+4 sudo ./install.sh
